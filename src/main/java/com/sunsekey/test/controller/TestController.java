@@ -1,5 +1,7 @@
 package com.sunsekey.test.controller;
 
+import com.sunsekey.test.service.ITestService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,11 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/test")
 public class TestController{
 
+    @Autowired
+    ITestService iTestService;
     @RequestMapping(value="/hello")
     public ModelAndView hello(){
         ModelAndView mv = new ModelAndView();
         mv.setViewName("hello");
-        mv.addObject("msg", "helloWorld");
+        mv.addObject("msg",iTestService.hello());
         return mv;
     }
 }
