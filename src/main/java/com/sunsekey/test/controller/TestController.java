@@ -17,8 +17,13 @@ public class TestController{
     @RequestMapping(value="/hello")
     public ModelAndView hello(){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("hello");
-        mv.addObject("msg",iTestService.hello());
+        mv.setViewName("test/hello");
+        try {
+            mv.addObject("msg", iTestService.hello());
+        } catch (Exception ex) {
+            mv.addObject("errorMsg", ex.getMessage());
+            mv.setViewName("error/error");
+        }
         return mv;
     }
 }
