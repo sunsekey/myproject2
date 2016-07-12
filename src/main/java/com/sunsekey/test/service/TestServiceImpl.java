@@ -21,4 +21,5 @@ public class TestServiceImpl implements ITestService {
     public String hello(){
         return "Hello World From ServiceImpl;This is user1:" + jdbcTestDao.getUserById(1).toString() + "(BY JDBC)<br/>" + hibernateTestDao.getUserById(1) + "(BY HIBERNATE)";
     }
+
 }
