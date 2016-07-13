@@ -18,17 +18,18 @@ public class UserController {
     private IUserService iUserService;
 
     @RequestMapping(value = "/save")
-    public ModelAndView save() {
+    public ModelAndView save(User user) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("user/afterSave");
-        User newUser = new User();
-        newUser.setName("老王");
-        newUser.setAccount("s001");
-        newUser.setAge(29);
-        newUser.setSex("001");
-        newUser.setPassword("123456");
-        iUserService.save(newUser);
+        iUserService.save(user);
         mv.addObject("msg", "save successfully");
+        return mv;
+    }
+
+    @RequestMapping(value = "/userForm")
+    public ModelAndView userForm(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("user/userForm");
         return mv;
     }
 }
