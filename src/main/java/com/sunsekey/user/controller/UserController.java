@@ -21,8 +21,9 @@ public class UserController {
     public ModelAndView save(User user) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("user/afterSave");
-        iUserService.save(user);
-        iUserService.getAndPrintUser(user.getId());
+        /*iUserService.save(user);
+        iUserService.getAndPrintUser(user.getId());*/
+        iUserService.saveOpr(user);
         mv.addObject("msg", "save successfully");
         return mv;
     }
