@@ -16,5 +16,14 @@ public class UserServiceImpl implements IUserService{
 
     public void save(User user) {
         userDao.save(user);
+        getAndPrintUser(user.getId());
+//        throw new RuntimeException("from getAndPrintUser");
+    }
+
+    public void getAndPrintUser(Integer id){
+        User user = userDao.getUser(id);
+        System.out.println(user.toString());
+        throw new RuntimeException("from getAndPrintUser");
+
     }
 }

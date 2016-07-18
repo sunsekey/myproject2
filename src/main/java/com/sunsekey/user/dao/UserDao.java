@@ -21,4 +21,8 @@ public class UserDao implements IUserDao{
     public void save(User user) {
         getCurrentSession().save(user);
     }
+
+    public User getUser(Integer id) {
+        return (User)getCurrentSession().get(User.class, id);
+    }
 }

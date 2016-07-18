@@ -5,4 +5,4 @@
   Time: 22:49
   To change this template use File | Settings | File Templates.
 --%>
-<script type="text/javascript" src="../../../resources/js/jquery/jquery-3.0.0.min.js"/>
+<script type="text/javascript" src="/myproject2/resources/js/jquery/jquery-3.0.0.min.js"/>

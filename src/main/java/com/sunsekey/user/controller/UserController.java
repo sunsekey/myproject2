@@ -22,6 +22,7 @@ public class UserController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("user/afterSave");
         iUserService.save(user);
+        iUserService.getAndPrintUser(user.getId());
         mv.addObject("msg", "save successfully");
         return mv;
     }
@@ -32,4 +33,5 @@ public class UserController {
         mv.setViewName("user/userForm");
         return mv;
     }
+
 }

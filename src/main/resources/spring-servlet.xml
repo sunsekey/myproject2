@@ -26,6 +26,7 @@
     </bean>
 
     <!--处理静态资源的请求-->
-    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <!--<mvc:resources mapping="/resources/**" location="/resources/"/>-->
+    <mvc:default-servlet-handler />
     <!--<bean class="com.sunsekey.test.controller.TestController"/>-->
 </beans>

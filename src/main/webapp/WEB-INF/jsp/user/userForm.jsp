@@ -1,15 +1,11 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2016/7/13
-  Time: 22:38
-  To change this template use File | Settings | File Templates.
---%>
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%--<%@include file="../common/meta.jsp" %>--%>
 <html>
 <head>
     <title>userForm</title>
-    <%@include file="../common/common.jsp" %>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery/jquery-3.0.0.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/myproject2/user/test.js"></script>
 </head>
 <body>
 <div>
@@ -23,23 +19,5 @@
         <input type="submit" value="提交"/>
     </form>
 </div>
-<%--<script type="text/javascript">
-
-    $(function () {
-        alert("");
-    });
-    function serializeObject(form){
-        var o={};
-        $.each(form.serializeArray(),function(index){
-            if(o[this['name']]){
-                o[this['name']]=o[this['name']]+","+this['value'];
-            }
-            else{
-                o[this['name']]=this['value'];
-            }
-        });
-        return o;
-    }
-</script>--%>
 </body>
 </html>
