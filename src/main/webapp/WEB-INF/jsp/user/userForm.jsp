@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--<%@include file="../common/meta.jsp" %>--%>
+<%@include file="../global/meta.jsp" %>
 <html>
 <head>
     <title>userForm</title>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/jquery/jquery-3.0.0.min.js"></script>
-    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/myproject2/user/test.js"></script>
 </head>
 <body>
 <div>

@@ -8,7 +8,4 @@ import com.sunsekey.user.entity.User;
  */
 public interface IUserService extends IBaseService<User>{
 
-    void getAndPrintUser(Integer id);
-
-    void saveOpr(User user);
 }

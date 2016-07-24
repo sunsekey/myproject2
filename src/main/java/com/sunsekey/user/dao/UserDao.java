@@ -1,28 +1,42 @@
 package com.sunsekey.user.dao;
 
 import com.sunsekey.user.entity.User;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/7/12.
  */
 @Repository
-public class UserDao implements IUserDao{
+public class UserDao implements IUserDao {
 
     @Autowired
     SessionFactory sessionFactory;
 
-    private Session getCurrentSession(){
+    private Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
+
     public void save(User user) {
         getCurrentSession().save(user);
     }
-
-    public User getUser(Integer id) {
-        return (User)getCurrentSession().get(User.class, id);
+    public List<User> selectAll() {
+        Query query = getCurrentSession().createQuery("from com.sunsekey.user.entity.User as u");
+        List<User> userList = query.list();
+        return userList;
     }
+
+    public void delete(User user) {
+        getCurrentSession().delete(user);
+    }
+
+    public User selectById(Integer id) {
+        return (User)getCurrentSession().load(User.class, id);
+    }
+
 }

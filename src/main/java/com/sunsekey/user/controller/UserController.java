@@ -5,7 +5,11 @@ import com.sunsekey.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2016/7/12.
@@ -21,9 +25,7 @@ public class UserController {
     public ModelAndView save(User user) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("user/afterSave");
-        /*iUserService.save(user);
-        iUserService.getAndPrintUser(user.getId());*/
-        iUserService.saveOpr(user);
+        iUserService.save(user);
         mv.addObject("msg", "save successfully");
         return mv;
     }
@@ -33,6 +35,23 @@ public class UserController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("user/userForm");
         return mv;
+    }
+
+    @RequestMapping(value="/userList")
+    public ModelAndView viewUserList(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("user/userList");
+        mv.addObject("userList", iUserService.selectAll());
+        return mv;
+    }
+
+    @RequestMapping(value="/delete")
+    @ResponseBody
+    public Map<String,Object> delete(Integer id) {
+        Map<String, Object> map = new HashMap<String, Object>();
+        boolean flag = iUserService.delete(id);
+        map.put("suceess", flag);
+        return map;
     }
 
 }

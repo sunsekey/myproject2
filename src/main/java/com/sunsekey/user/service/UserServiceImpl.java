@@ -5,6 +5,8 @@ import com.sunsekey.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2016/7/12.
  */
@@ -14,21 +16,38 @@ public class UserServiceImpl implements IUserService{
     @Autowired
     private IUserDao userDao;
 
-    public void save(User user) {
-        userDao.save(user);
-        //getAndPrintUser(user.getId());
-//        throw new RuntimeException("from getAndPrintUser");
+    public boolean save(User user) {
+        try {
+            userDao.save(user);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
-    public void getAndPrintUser(Integer id){
-        User user = userDao.getUser(id);
-        System.out.println(user.toString());
-        throw new RuntimeException("from getAndPrintUser");
-
+    public List<User> selectAll() {
+        return userDao.selectAll();
     }
 
-    public void saveOpr(User user) {
-        save(user);
-        getAndPrintUser(6);
+    public boolean delete(Integer id) {
+        User user = selectById(id);
+        try {
+            userDao.delete(user);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
+
+    public User selectById(Integer id) {
+        try {
+            return userDao.selectById(id);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
 }
