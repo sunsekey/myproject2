@@ -5,6 +5,7 @@ import com.sunsekey.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,15 +25,19 @@ public class UserController {
     @RequestMapping(value = "/save")
     public ModelAndView save(User user) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("user/afterSave");
+        mv.setViewName("user/aftersave");
         iUserService.save(user);
         mv.addObject("msg", "save successfully");
         return mv;
     }
 
     @RequestMapping(value = "/userForm")
-    public ModelAndView userForm(){
+    public ModelAndView userForm(@RequestParam Integer id){
         ModelAndView mv = new ModelAndView();
+        User user = iUserService.selectById(id);
+        if(null != user){
+            mv.addObject("user", user);
+        }
         mv.setViewName("user/userForm");
         return mv;
     }
@@ -50,7 +55,7 @@ public class UserController {
     public Map<String,Object> delete(Integer id) {
         Map<String, Object> map = new HashMap<String, Object>();
         boolean flag = iUserService.delete(id);
-        map.put("suceess", flag);
+        map.put("success", flag);
         return map;
     }
 
