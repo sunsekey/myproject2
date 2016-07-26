@@ -26,6 +26,16 @@ public class UserServiceImpl implements IUserService{
         }
     }
 
+    public boolean update(User user) {
+        try {
+            userDao.update(user);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
     public List<User> selectAll() {
         return userDao.selectAll();
     }
@@ -43,7 +53,9 @@ public class UserServiceImpl implements IUserService{
 
     public User selectById(Integer id) {
         try {
-            return userDao.selectById(id);
+            User user = userDao.selectById(id);
+            user.setName(user.getName());
+            return user;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

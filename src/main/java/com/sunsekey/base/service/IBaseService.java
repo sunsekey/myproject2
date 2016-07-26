@@ -8,6 +8,8 @@ import java.util.List;
 public interface IBaseService<T>{
     boolean save(T t);
 
+    boolean update(T t);
+
     List<T> selectAll();
 
     boolean delete(Integer id);

@@ -25,6 +25,11 @@ public class UserDao implements IUserDao {
     public void save(User user) {
         getCurrentSession().save(user);
     }
+
+    public void update(User user) {
+        getCurrentSession().update(user);
+    }
+
     public List<User> selectAll() {
         Query query = getCurrentSession().createQuery("from com.sunsekey.user.entity.User as u");
         List<User> userList = query.list();

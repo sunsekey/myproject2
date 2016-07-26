@@ -25,8 +25,12 @@ public class UserController {
     @RequestMapping(value = "/save")
     public ModelAndView save(User user) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("user/aftersave");
-        iUserService.save(user);
+        mv.setViewName("user/afterSave");
+        if(user.getId() == 0)
+            iUserService.save(user);
+        else{
+            iUserService.update(user);
+        }
         mv.addObject("msg", "save successfully");
         return mv;
     }

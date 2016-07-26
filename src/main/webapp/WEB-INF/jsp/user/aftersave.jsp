@@ -16,7 +16,7 @@ ${msg}
 <input id="back" type="button" value="返回"/>
 <script type="text/javascript">
     $("#back").on("click",function(){
-        window.location.href="userForm";
+        window.location.href="userForm?id=0";
     });
 </script>
 </body>

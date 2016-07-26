@@ -8,6 +8,7 @@
 <body>
 <div>
     <form id="userForm" action="${ctx}/user/save">
+        <input type="hidden" name="id" value="${user.id}"/>
         姓名：<input type="text" name="name" value="${user.name}"/><br/>
         账号：<input type="text" name="account" value="${user.account}"/><br/>
         密码：<input type="password" name="password" value="${user.password}"/><br/>

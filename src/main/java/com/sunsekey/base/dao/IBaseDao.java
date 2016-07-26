@@ -9,6 +9,8 @@ public interface IBaseDao<T> {
 
     void save(T t);
 
+    void update(T t);
+
     List<T> selectAll();
 
     void delete(T t);
