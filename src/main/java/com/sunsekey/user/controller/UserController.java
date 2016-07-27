@@ -26,7 +26,7 @@ public class UserController {
     public ModelAndView save(User user) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("user/afterSave");
-        if(user.getId() == 0)
+        if(null == user.getId())
             iUserService.save(user);
         else{
             iUserService.update(user);

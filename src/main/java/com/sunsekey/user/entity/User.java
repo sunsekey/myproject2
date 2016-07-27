@@ -1,7 +1,8 @@
 package com.sunsekey.user.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.hibernate.id.IncrementGenerator;
+
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
@@ -10,24 +11,35 @@ import java.io.Serializable;
 @Entity
 public class User implements Serializable {
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                '}';
-    }
 
     @Id
-    private int id;
-    private String name;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
     private String account;
     private String password;
-    private int age;
+    private Integer age;
+    private String sex;
+    @Transient
+    private String firstName;
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Transient
+    private String lastName;
 
     public String getSex() {
         return sex;
@@ -37,16 +49,29 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
     public String getPassword() {
         return password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     public void setPassword(String password) {
@@ -61,21 +86,21 @@ public class User implements Serializable {
         this.account = account;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
-        this.name = name;
+        String[] names = name.split(" ");
+        firstName = names[0];
+        lastName = names[1];
+    }
+    @Column(name="name")
+    public String getName() {
+        return firstName + lastName;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
-
-    private String sex;
 }

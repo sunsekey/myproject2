@@ -11,7 +11,7 @@
     <br/>
     <c:forEach items="${userList}" var="user" varStatus="status">
         <div>
-            No.${status.index + 1}:${user.name}
+            No.${status.index + 1}:${user.firstName} ${user.lastName}
             <input name="uId" value="${user.id}" type="hidden"/>
             <input type="button" value="edit" name="edit"/>
             <input type="button" value="delete" name="delete"/>
