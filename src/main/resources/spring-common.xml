@@ -51,6 +51,13 @@
                 <prop key="dialect">org.hibernate.dialect.MySQL57InnoDBDialect</prop>
             </props>
         </property>
+        <!-- mappingResources属性用来列出全部映射文件 -->
+        <property name="mappingResources">
+            <list>
+                <!-- 配置所有PO映射文件 -->
+                <value>com/sunsekey/user/entity/User.hbm.xml</value>
+            </list>
+        </property>
     </bean>
 
     <bean id="transactionManager"
@@ -64,14 +71,15 @@
     <tx:advice id="txAdvice" transaction-manager="transactionManager">
         <tx:attributes>
             <tx:method name="get*" read-only="true" propagation="REQUIRED"/>
-            <tx:method name="save*"  propagation="REQUIRED"/>
-            <tx:method name="select*"  propagation="REQUIRED"/>
-            <tx:method name="delete*"  propagation="REQUIRED"/>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="select*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
         </tx:attributes>
     </tx:advice>
 
     <aop:config>
-        <aop:pointcut id="serviceOperation" expression="execution(* com.sunsekey.*.service.*ServiceImpl.*(..)) or execution(* com.sunsekey.*.dao.*Dao.*(..))"/>
+        <aop:pointcut id="serviceOperation"
+                      expression="execution(* com.sunsekey.*.service.*ServiceImpl.*(..)) or execution(* com.sunsekey.*.dao.*Dao.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation"/>
     </aop:config>
 

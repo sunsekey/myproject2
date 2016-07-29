@@ -1,45 +1,34 @@
 package com.sunsekey.user.entity;
 
-import org.hibernate.id.IncrementGenerator;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import java.util.StringTokenizer;
+
+import javax.persistence.Transient;
 
 /**
  * Created by Administrator on 2016/7/9.
  */
-@Entity
 public class User implements Serializable {
 
-
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer id;
     private String account;
     private String password;
     private Integer age;
     private String sex;
-    @Transient
     private String firstName;
-
+    private String lastName;
     public String getLastName() {
         return lastName;
     }
-
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-
     public String getFirstName() {
         return firstName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    @Transient
-    private String lastName;
 
     public String getSex() {
         return sex;
@@ -61,19 +50,6 @@ public class User implements Serializable {
         return password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", account='" + account + '\'' +
-                ", password='" + password + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
-
     public void setPassword(String password) {
         this.password = password;
     }
@@ -87,13 +63,19 @@ public class User implements Serializable {
     }
 
     public void setName(String name) {
-        String[] names = name.split(" ");
-        firstName = names[0];
-        lastName = names[1];
+        firstName = "";
+        lastName = "";
+        if (name != null && !name.isEmpty()) {
+            StringTokenizer stringTokenizer = new StringTokenizer(name);
+            firstName = stringTokenizer.nextToken();
+            if(stringTokenizer.hasMoreTokens()){
+                lastName = stringTokenizer.nextToken();
+            }
+        }
     }
-    @Column(name="name")
+
     public String getName() {
-        return firstName + lastName;
+        return firstName + " " +lastName;
     }
 
     public Integer getId() {
@@ -102,5 +84,18 @@ public class User implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 }

@@ -37,7 +37,8 @@ public class UserServiceImpl implements IUserService{
     }
 
     public List<User> selectAll() {
-        return userDao.selectAll();
+        List<User> users = userDao.selectAll();
+        return users;
     }
 
     public boolean delete(Integer id) {
@@ -53,9 +54,7 @@ public class UserServiceImpl implements IUserService{
 
     public User selectById(Integer id) {
         try {
-            User user = userDao.selectById(id);
-            user.setName(user.getName());
-            return user;
+            return userDao.selectById(id);
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

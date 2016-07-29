@@ -31,7 +31,7 @@ public class UserDao implements IUserDao {
     }
 
     public List<User> selectAll() {
-        Query query = getCurrentSession().createQuery("from com.sunsekey.user.entity.User as u");
+        Query query = getCurrentSession().createQuery("from User as u");
         List<User> userList = query.list();
         return userList;
     }
@@ -41,7 +41,7 @@ public class UserDao implements IUserDao {
     }
 
     public User selectById(Integer id) {
-        return (User)getCurrentSession().load(User.class, id);
+        return (User)getCurrentSession().get(User.class, id);
     }
 
 }
