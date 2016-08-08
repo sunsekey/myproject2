@@ -1,6 +1,6 @@
 package com.sunsekey.test.dao;
 
-import com.sunsekey.user.entity.User;
+import com.sunsekey.entity.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

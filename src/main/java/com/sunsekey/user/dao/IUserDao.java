@@ -1,7 +1,7 @@
 package com.sunsekey.user.dao;
 
 import com.sunsekey.base.dao.IBaseDao;
-import com.sunsekey.user.entity.User;
+import com.sunsekey.entity.User;
 
 /**
  * Created by Administrator on 2016/7/12.

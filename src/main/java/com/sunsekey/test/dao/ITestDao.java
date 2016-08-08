@@ -1,6 +1,6 @@
 package com.sunsekey.test.dao;
 
-import com.sunsekey.user.entity.User;
+import com.sunsekey.entity.User;
 
 /**
  * Created by Administrator on 2016/7/9.

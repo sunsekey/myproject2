@@ -1,4 +1,4 @@
-package com.sunsekey.user.entity;
+package com.sunsekey.entity;
 
 import java.io.Serializable;
 import java.util.StringTokenizer;
@@ -17,15 +17,19 @@ public class User implements Serializable {
     private String sex;
     private String firstName;
     private String lastName;
+
     public String getLastName() {
         return lastName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public String getFirstName() {
         return firstName;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -68,14 +72,14 @@ public class User implements Serializable {
         if (name != null && !name.isEmpty()) {
             StringTokenizer stringTokenizer = new StringTokenizer(name);
             firstName = stringTokenizer.nextToken();
-            if(stringTokenizer.hasMoreTokens()){
+            if (stringTokenizer.hasMoreTokens()) {
                 lastName = stringTokenizer.nextToken();
             }
         }
     }
 
     public String getName() {
-        return firstName + " " +lastName;
+        return firstName + " " + lastName;
     }
 
     public Integer getId() {

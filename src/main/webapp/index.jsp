@@ -12,7 +12,6 @@
     <title>$Title$</title>
   </head>
   <body>
-  userList:<a href="${ctx}/user/userList">用户列表</a>
-
+  personList:<a href="${ctx}/person/personList">有谁</a>
   </body>
 </html>

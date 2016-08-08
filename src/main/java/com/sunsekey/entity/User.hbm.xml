@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.sunsekey.user.entity.User" table="user" schema="myproject2">
+    <class name="com.sunsekey.entity.User" table="user" schema="myproject2">
         <id column="id" name="id">
             <generator class="increment"/>
         </id>

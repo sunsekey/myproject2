@@ -4,5 +4,5 @@
  */
 var ctx = $("#pageContext").val();
 function to(url){
-    window.location.url = url;
+    window.location.href = url;
 }

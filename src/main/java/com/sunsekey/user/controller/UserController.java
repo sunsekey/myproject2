@@ -1,7 +1,10 @@
 package com.sunsekey.user.controller;
 
-import com.sunsekey.user.entity.User;
+import com.sunsekey.base.controller.BaseController;
+import com.sunsekey.base.service.IBaseService;
+import com.sunsekey.entity.User;
 import com.sunsekey.user.service.IUserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +20,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController extends BaseController<User> {
 
     @Autowired
     private IUserService iUserService;
@@ -54,13 +57,8 @@ public class UserController {
         return mv;
     }
 
-    @RequestMapping(value="/delete")
-    @ResponseBody
-    public Map<String,Object> delete(Integer id) {
-        Map<String, Object> map = new HashMap<String, Object>();
-        boolean flag = iUserService.delete(id);
-        map.put("success", flag);
-        return map;
+    @Override
+    public IBaseService<User> getIBaseService() {
+        return iUserService;
     }
-
 }
