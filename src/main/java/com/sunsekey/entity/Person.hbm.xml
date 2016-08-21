@@ -22,5 +22,7 @@
             <key column="person_id"></key>
             <one-to-many class="com.sunsekey.entity.Idea"></one-to-many>
         </set>
+        <property name="createTime" column="create_time"/>
+        <property name="modifyTime" column="modify_time"/>
     </class>
 </hibernate-mapping>

@@ -1,5 +1,6 @@
 package com.sunsekey.entity;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +15,24 @@ public class Person {
     private Integer age;
     private Byte sex;
     private Set<Idea> ideas = new HashSet<Idea>();
+    private Timestamp createTime;
+    private Timestamp modifyTime;
+
+    public Timestamp getModifyTime() {
+        return modifyTime;
+    }
+
+    public void setModifyTime(Timestamp modifyTime) {
+        this.modifyTime = modifyTime;
+    }
+
+    public Timestamp getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
 
     public Integer getId() {
         return id;
